@@ -26,15 +26,16 @@ class Room {
       GAME.context.fillRect(2, 2, this.size-4, this.size-4);
 
       /* Draw any passages for the room. */
-      GAME.context.fillStyle = '#555555';
-      if(this.Passages.North.passageIsOpen) GAME.context.fillRect((this.size-this.passageSize)/2, 1, this.passageSize, this.passageSize);
-      if(this.Passages.East.passageIsOpen) GAME.context.fillRect((this.size-this.passageSize)-1, (this.size-this.passageSize)/2, this.passageSize, this.passageSize);
-      if(this.Passages.South.passageIsOpen) GAME.context.fillRect((this.size-this.passageSize)/2, (this.size-this.passageSize)-1, this.passageSize, this.passageSize);
-      if(this.Passages.West.passageIsOpen) GAME.context.fillRect(1, (this.size-this.passageSize)/2, this.passageSize, this.passageSize);
+      if(this.Passages.North.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.startingRoom.size-PLAYER.startingRoom.passageSize)/2, 1, PLAYER.startingRoom.passageSize, PLAYER.startingRoom.passageSize);
+      if(this.Passages.East.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.startingRoom.size-PLAYER.startingRoom.passageSize)-1, (PLAYER.startingRoom.size-PLAYER.startingRoom.passageSize)/2, PLAYER.startingRoom.passageSize, PLAYER.startingRoom.passageSize);
+      if(this.Passages.South.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.startingRoom.size-PLAYER.startingRoom.passageSize)/2, (PLAYER.startingRoom.size-PLAYER.startingRoom.passageSize)-1, PLAYER.startingRoom.passageSize, PLAYER.startingRoom.passageSize);
+      if(this.Passages.West.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, 1, (PLAYER.startingRoom.size-PLAYER.startingRoom.passageSize)/2, PLAYER.startingRoom.passageSize, PLAYER.startingRoom.passageSize);
 
       /* Draw the threats for this room. */
+      // TODO ~ SVG Maybe? //
 
       /* Draw the treasure for this room. */
+      // TODO ~ SVG Maybe? //
 
     };
   };

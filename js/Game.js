@@ -2,6 +2,8 @@ class Game {
   constructor() {
     this.config = null;
     this.rooms = [];
+    this.SVG_FileNames = ['passage.svg'];
+    this.SVG_Files = {};
     this.canvas = document.createElement('canvas');
     this.context = this.canvas.getContext('2d');
     this.canvas.id = "canvas";
@@ -21,10 +23,16 @@ class Game {
       xhttp.send();
     };
 
-    this.getConfigLength = function() {
+    this.getObjectLength = function(obj) {
       let len = 0, key;
-      for(key in this.config) len += (this.config.hasOwnProperty(key) ? 1 : 0);
+      for(key in obj) len += (obj.hasOwnProperty(key) ? 1 : 0);
       return len;
+    };
+
+    this.loadSVGFiles = function() {
+      for(let i = 0; i < this.SVG_FileNames.length; i++) {
+        new SVG(this.SVG_FileNames[i].split('.')[0], this.SVG_FileNames[i]);
+      }
     };
 
 
@@ -39,7 +47,7 @@ class Game {
 
 
     this.createMaze = function() {
-      for(let i = 0; i < GAME.getConfigLength(); i++) {
+      for(let i = 0; i < GAME.getObjectLength(this.config); i++) {
         let room = new Room(i, GAME.config[i]);
         GAME.rooms.push(room);
       }
