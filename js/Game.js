@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.config = null;
     this.rooms = [];
-    this.SVG_FileNames = ['passage.svg'];
+    this.SVG_FilePaths = ['SVG/GamePlay/passage.svg', 'SVG/Threats/bomb.svg'];
     this.SVG_Files = {};
     this.canvas = document.createElement('canvas');
     this.context = this.canvas.getContext('2d');
@@ -30,8 +30,8 @@ class Game {
     };
 
     this.loadSVGFiles = function() {
-      for(let i = 0; i < this.SVG_FileNames.length; i++) {
-        new SVG(this.SVG_FileNames[i].split('.')[0], this.SVG_FileNames[i]);
+      for(let i = 0; i < this.SVG_FilePaths.length; i++) {
+        new SVG(this.SVG_FilePaths[i].split('SVG/')[1].split('/')[1].split('.')[0], this.SVG_FilePaths[i]);
       }
     };
 
