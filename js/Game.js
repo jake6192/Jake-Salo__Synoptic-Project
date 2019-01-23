@@ -2,8 +2,11 @@ class Game {
   constructor() {
     this.config = null;
     this.rooms = [];
-    this.canvasWidth = 1200;
-    this.canvasHeight = 675;
+    this.canvas = document.createElement('canvas');
+    this.context = this.canvas.getContext('2d');
+    this.canvas.id = "canvas";
+    this.canvas.width = 1200;
+    this.canvas.height = 675;
 
     /* loadConfig() will pull the tempory configuration file and assign it's contents to the GAME object. */
     this.loadConfig = function(path, callback) {
@@ -21,17 +24,12 @@ class Game {
 
 
     this.prepareCanvas = function() {
-      let canvas = document.createElement('canvas');
-      let context = canvas.getContext('2d');
-      canvas.id = "canvas";
-      canvas.width = this.canvasWidth;
-      canvas.height = this.canvasHeight;
       /* Draw the canvas background. */
-      context.fillStyle = '#BBBBBB';
-      context.fillRect(0, 0, canvas.width, canvas.height);
+      GAME.context.fillStyle = '#BBBBBB';
+      GAME.context.fillRect(0, 0, GAME.canvas.width, GAME.canvas.height);
       /* Insert the canvas into the HTML markup. */
       document.getElementById('mainContainer').innerHTML = '';
-      document.getElementById('mainContainer').appendChild(canvas);
+      document.getElementById('mainContainer').appendChild(GAME.canvas);
     };
 
 
