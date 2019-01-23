@@ -15,5 +15,6 @@ $(document).ready(function() {
     GAME.createMaze();
     GAME.prepareCanvas(); // Draws a blank canvas in preparation for rooms. //
     PLAYER.setRoom(); // Assign the player to a random room. //
+    PLAYER.startingRoom.drawRoom(); // Draw the inital starting room on the canvas. //
   });
 });
