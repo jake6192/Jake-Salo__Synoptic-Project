@@ -9,7 +9,7 @@ const PLAYER = new Player();
 /*
 * When the DOM has loaded, begin preparing components for the maze.
 **/
-$(document).ready(function() {
+function newGame() {
   /* This uses a callback function as all of the other processes are dependant on the configuration information. */
   GAME.loadConfig('config.json', function() {
     GAME.createMaze();
@@ -17,4 +17,4 @@ $(document).ready(function() {
     PLAYER.setRoom(); // Assign the player to a random room. //
     PLAYER.startingRoom.drawRoom(); // Draw the inital starting room on the canvas. //
   });
-});
+}

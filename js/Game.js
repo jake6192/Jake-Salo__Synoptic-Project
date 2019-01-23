@@ -10,10 +10,15 @@ class Game {
 
     /* loadConfig() will pull the tempory configuration file and assign it's contents to the GAME object. */
     this.loadConfig = function(path, callback) {
-      $.getJSON(path, function(result) {
-        GAME.config = result;
-        callback();
-      });
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if(this.readyState == 4 && this.status == 200) {
+          GAME.config = JSON.parse(this.responseText);
+          callback();
+        }
+      };
+      xhttp.open("GET", path, true);
+      xhttp.send();
     };
 
     this.getConfigLength = function() {
