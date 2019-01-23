@@ -1,9 +1,9 @@
 class Player {
   constructor() {
-    this.roomID = null;
+    this.startingRoom = null;
 
     this.setRoom = function() {
-      this.roomID = Math.floor(Math.random()*GAME.rooms.length);
+      this.startingRoom = GAME.rooms[Math.floor(Math.random()*GAME.rooms.length)];
     };
   };
 }
