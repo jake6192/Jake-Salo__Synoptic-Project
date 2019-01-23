@@ -78,8 +78,8 @@
       }
     },
     "Treasure": {
-      "type": "Gold",
-      "value": 500
+      "type": "Key",
+      "value": 1
     },
     "Threat": {
       "type": "Dungeon Master",
