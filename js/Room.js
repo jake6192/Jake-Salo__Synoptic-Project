@@ -32,16 +32,15 @@ class Room {
       if(this.Passages.West.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, 1, (PLAYER.startingRoom.size-PLAYER.startingRoom.SVG_Size)/2, PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size);
 
       /* Draw the threats for this room. */
-      if(this.Threat.type == 'Bomb')
-        GAME.context.drawImage(GAME.SVG_Files.bomb, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size);
-      else if(this.Threat.type == 'Guard Dog')
-        GAME.context.drawImage(GAME.SVG_Files.guard_dog, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size);
-      else if(this.Threat.type == 'Dungeon Master')
-        GAME.context.drawImage(GAME.SVG_Files.dungeon_master, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size*0.75), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size*0.75), PLAYER.startingRoom.SVG_Size*1.5, PLAYER.startingRoom.SVG_Size*1.5);
+      switch(this.Threat.type) {
+        case 'Bomb': GAME.context.drawImage(GAME.SVG_Files.bomb, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size); break;
+        case 'Guard Dog': GAME.context.drawImage(GAME.SVG_Files.guard_dog, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size); break;
+        case 'Dungeon Master': GAME.context.drawImage(GAME.SVG_Files.dungeon_master, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size*0.75), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size*0.75), PLAYER.startingRoom.SVG_Size*1.5, PLAYER.startingRoom.SVG_Size*1.5); break;
+      }
 
-      /* Draw the treasure for this room. */
-      // TODO ~ SVG Maybe? //
-
+      /*
+      * The treasure will get drawn once the player defeats the threat.
+      **/
     };
   };
 }

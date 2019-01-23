@@ -65,7 +65,7 @@
         "isExitPassage": false
       },
       "East": {
-        "passageIsOpen": true,
+        "passageIsOpen": false,
         "isExitPassage": true
       },
       "South": {
