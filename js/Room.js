@@ -18,11 +18,8 @@ class Room {
       context.lineWidth = 2;
       context.moveTo(0, 0);
       context.lineTo(this.size, 0);
-      context.moveTo(this.size, 0);
       context.lineTo(this.size, this.size);
-      context.moveTo(this.size, this.size);
       context.lineTo(0, this.size);
-      context.moveTo(0, this.size);
       context.lineTo(0, 0);
       context.stroke();
       /* Fill the room background. */
