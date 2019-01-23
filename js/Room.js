@@ -26,16 +26,16 @@ class Room {
       GAME.context.fillRect(2, 2, this.size-4, this.size-4);
 
       /* Draw any passages for the room. */
-      if(this.Passages.North.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.startingRoom.size-PLAYER.startingRoom.SVG_Size)/2, 1, PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size);
-      if(this.Passages.East.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.startingRoom.size-PLAYER.startingRoom.SVG_Size)-1, (PLAYER.startingRoom.size-PLAYER.startingRoom.SVG_Size)/2, PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size);
-      if(this.Passages.South.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.startingRoom.size-PLAYER.startingRoom.SVG_Size)/2, (PLAYER.startingRoom.size-PLAYER.startingRoom.SVG_Size)-1, PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size);
-      if(this.Passages.West.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, 1, (PLAYER.startingRoom.size-PLAYER.startingRoom.SVG_Size)/2, PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size);
+      if(this.Passages.North.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.room.size-PLAYER.room.SVG_Size)/2, 1, PLAYER.room.SVG_Size, PLAYER.room.SVG_Size);
+      if(this.Passages.East.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.room.size-PLAYER.room.SVG_Size)-1, (PLAYER.room.size-PLAYER.room.SVG_Size)/2, PLAYER.room.SVG_Size, PLAYER.room.SVG_Size);
+      if(this.Passages.South.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, (PLAYER.room.size-PLAYER.room.SVG_Size)/2, (PLAYER.room.size-PLAYER.room.SVG_Size)-1, PLAYER.room.SVG_Size, PLAYER.room.SVG_Size);
+      if(this.Passages.West.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, 1, (PLAYER.room.size-PLAYER.room.SVG_Size)/2, PLAYER.room.SVG_Size, PLAYER.room.SVG_Size);
 
       /* Draw the threats for this room. */
       switch(this.Threat.type) {
-        case 'Bomb': GAME.context.drawImage(GAME.SVG_Files.bomb, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size); break;
-        case 'Guard Dog': GAME.context.drawImage(GAME.SVG_Files.guard_dog, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size/2), PLAYER.startingRoom.SVG_Size, PLAYER.startingRoom.SVG_Size); break;
-        case 'Dungeon Master': GAME.context.drawImage(GAME.SVG_Files.dungeon_master, (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size*0.75), (PLAYER.startingRoom.size/2)-(PLAYER.startingRoom.SVG_Size*0.75), PLAYER.startingRoom.SVG_Size*1.5, PLAYER.startingRoom.SVG_Size*1.5); break;
+        case 'Bomb': GAME.context.drawImage(GAME.SVG_Files.bomb, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
+        case 'Guard Dog': GAME.context.drawImage(GAME.SVG_Files.guard_dog, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
+        case 'Dungeon Master': GAME.context.drawImage(GAME.SVG_Files.dungeon_master, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), PLAYER.room.SVG_Size*1.5, PLAYER.room.SVG_Size*1.5); break;
       }
 
       /*

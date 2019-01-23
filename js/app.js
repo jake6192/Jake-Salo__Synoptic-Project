@@ -15,6 +15,6 @@ function newGame() {
     GAME.loadSVGFiles(); // This will also begin to draw the starting room when complete. //
     GAME.createMaze();
     GAME.prepareCanvas(); // Draws a blank canvas in preparation for rooms. //
-    PLAYER.setRoom(); // Assign the player to a random room. //
+    PLAYER.setRandomRoom(); // Assign the player to a random room. //
   });
 }
