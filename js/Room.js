@@ -42,5 +42,10 @@ class Room {
       * The treasure will get drawn once the player defeats the threat.
       **/
     };
+
+    this.showValidActions = function(HTMLelement) {
+      let id  = HTMLelement.id;
+      
+    };
   };
 }

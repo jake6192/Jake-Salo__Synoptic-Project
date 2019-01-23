@@ -3,10 +3,35 @@
   <head>
     <meta charset="utf-8">
     <title></title>
+    <link rel="stylesheet" href="style.css">
   </head>
   <body onload="newGame();">
     <!-- The main canvas will be inserted into this container. -->
     <div id="mainContainer"></div>
+
+    <div id="playerActions">
+      <h1>Actions:</h1>
+      <div class="playerAction" id="changeRoom" onclick="PLAYER.room.showValidActions(this);">
+        <span>Change Room</span>
+        <div class="subActions">
+          <div class="subAction inactive" name="North">North</div>
+          <div class="subAction inactive" name="East">East</div>
+          <div class="subAction inactive" name="South">South</div>
+          <div class="subAction inactive" name="West">West</div>
+        </div>
+      </div>
+      <div class="playerAction" id="attackThreat" onclick="PLAYER.room.showValidActions(this);">
+        <span>Attack Threat</span>
+        <div class="subActions">
+          <div class="subAction" name="Defuse">Defuse</div>
+          <div class="subAction" name="Offer Food">Offer Food</div>
+          <div class="subAction" name="Bribe">Bribe [50 Gold]</div>
+        </div>
+      </div>
+      <div class="playerAction inactive" id="collectTreasure" onclick="/*TODO*/">
+        <span>Collect Treasure</span>
+      </div>
+    </div>
 
     <script src="js/SVG.js"></script>
     <script src="js/Game.js"></script>

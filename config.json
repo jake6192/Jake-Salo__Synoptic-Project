@@ -83,7 +83,7 @@
     },
     "Threat": {
       "type": "Dungeon Master",
-      "action": "Bribe [50 Gold]"
+      "action": "Bribe"
     }
   }
 }
