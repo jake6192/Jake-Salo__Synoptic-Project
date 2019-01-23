@@ -1,0 +1,89 @@
+"rooms": {
+  "0": {
+    "Passages": {
+      "North": {
+        "passageIsOpen": false
+      },
+      "East": {
+        "passageIsOpen": true,
+        "connectingRoomID": 0,
+        "isExitPassage": false
+      },
+      "South": {
+        "passageIsOpen": true,
+        "connectingRoomID": 1,
+        "isExitPassage": false
+      },
+      "West": {
+        "passageIsOpen": false
+      }
+    },
+    "Treasure": {
+      "type": "Gold",
+      "value": 100
+    },
+    "Threat": {
+      "type": "Bomb",
+      "action": "Defuse"
+    }
+  },
+  "1": {
+    "Passages": {
+      "North": {
+        "passageIsOpen": true,
+        "connectingRoomID": 0,
+        "isExitPassage": false
+      },
+      "East": {
+        "passageIsOpen": false
+      },
+      "South": {
+        "passageIsOpen": true,
+        "connectingRoomID": 2,
+        "isExitPassage": false
+      },
+      "West": {
+        "passageIsOpen": true,
+        "connectingRoomID": 1,
+        "isExitPassage": false
+      }
+    },
+    "Treasure": {
+      "type": "Gold",
+      "value": 250
+    },
+    "Threat": {
+      "type": "Guard Dogs",
+      "action": "Offer Food"
+    }
+  },
+  "2": {
+    "Passages": {
+      "North": {
+        "passageIsOpen": true,
+        "connectingRoomID": 1,
+        "isExitPassage": false
+      },
+      "East": {
+        "passageIsOpen": false
+      },
+      "South": {
+        "passageIsOpen": true,
+        "isExitPassage": true
+      },
+      "West": {
+        "passageIsOpen": true,
+        "connectingRoomID": 1,
+        "isExitPassage": false
+      }
+    },
+    "Treasure": {
+      "type": "Gold",
+      "value": 500
+    },
+    "Threat": {
+      "type": "Dungeon Master",
+      "action": "Bribe [50 Gold]"
+    }
+  }
+}
