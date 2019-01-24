@@ -36,6 +36,8 @@ class Room {
         switch(this.Threat.type) {
           case 'Bomb': GAME.context.drawImage(GAME.SVG_Files.bomb, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
           case 'Guard Dog': GAME.context.drawImage(GAME.SVG_Files.guard_dog, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
+          case 'Troll': GAME.context.drawImage(GAME.SVG_Files.troll, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
+          case 'Dragon': GAME.context.drawImage(GAME.SVG_Files.dragon, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
           case 'Dungeon Master': GAME.context.drawImage(GAME.SVG_Files.dungeon_master, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), PLAYER.room.SVG_Size*1.5, PLAYER.room.SVG_Size*1.5); break;
         }
       } else if(this.Treasure) { // If all threats have been defeated, draw the treasure for the room. //

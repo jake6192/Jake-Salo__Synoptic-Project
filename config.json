@@ -2,20 +2,24 @@
   "0": {
     "Passages": {
       "North": {
-        "passageIsOpen": false
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 0
       },
       "East": {
         "passageIsOpen": true,
-        "connectingRoomID": 0,
-        "isExitPassage": false
+        "isExitPassage": false,
+        "connectingRoomID": 1
       },
       "South": {
         "passageIsOpen": true,
-        "connectingRoomID": 1,
-        "isExitPassage": false
+        "isExitPassage": false,
+        "connectingRoomID": 5
       },
       "West": {
-        "passageIsOpen": false
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 0
       }
     },
     "Treasure": {
@@ -31,21 +35,79 @@
     "Passages": {
       "North": {
         "passageIsOpen": true,
-        "connectingRoomID": 0,
-        "isExitPassage": false
+        "isExitPassage": false,
+        "connectingRoomID": 0
+      },
+      "East": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 2
+      },
+      "South": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 3
+      },
+      "West": {
+        "passageIsOpen": false
+      }
+    },
+    "Treasure": {
+      "type": "Gold",
+      "value": 150
+    },
+    "Threat": {
+      "type": "Troll",
+      "action": "Fight"
+    }
+  },
+  "2": {
+    "Passages": {
+      "North": {
+        "passageIsOpen": false
+      },
+      "East": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 4
+      },
+      "South": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 4
+      },
+      "West": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 1
+      }
+    },
+    "Treasure": {
+      "type": "Gold",
+      "value": 200
+    },
+    "Threat": {
+      "type": "Guard Dog",
+      "action": "Offer Food"
+    }
+  },
+  "3": {
+    "Passages": {
+      "North": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 1
       },
       "East": {
         "passageIsOpen": false
       },
       "South": {
         "passageIsOpen": true,
-        "connectingRoomID": 2,
-        "isExitPassage": false
+        "isExitPassage": false,
+        "connectingRoomID": 5
       },
       "West": {
-        "passageIsOpen": true,
-        "connectingRoomID": 1,
-        "isExitPassage": false
+        "passageIsOpen": false
       }
     },
     "Treasure": {
@@ -53,28 +115,27 @@
       "value": 250
     },
     "Threat": {
-      "type": "Guard Dog",
-      "action": "Offer Food"
+      "type": "Dragon",
+      "action": "Fight"
     }
   },
-  "2": {
+  "4": {
     "Passages": {
       "North": {
         "passageIsOpen": true,
-        "connectingRoomID": 1,
-        "isExitPassage": false
+        "isExitPassage": false,
+        "connectingRoomID": 2
       },
       "East": {
         "passageIsOpen": true,
-        "isExitPassage": true
+        "isExitPassage": false,
+        "connectingRoomID": 2
       },
       "South": {
         "passageIsOpen": false
       },
       "West": {
-        "passageIsOpen": true,
-        "connectingRoomID": 1,
-        "isExitPassage": false
+        "passageIsOpen": false
       }
     },
     "Treasure": {
@@ -83,6 +144,35 @@
     "Threat": {
       "type": "Dungeon Master",
       "action": "Bribe"
+    }
+  },
+  "5": {
+    "Passages": {
+      "North": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 0
+      },
+      "East": {
+        "passageIsOpen": true,
+        "isExitPassage": true
+      },
+      "South": {
+        "passageIsOpen": true,
+        "isExitPassage": false,
+        "connectingRoomID": 3
+      },
+      "West": {
+        "passageIsOpen": false
+      }
+    },
+    "Treasure": {
+      "type": "Gold",
+      "value": 300
+    },
+    "Threat": {
+      "type": "Bomb",
+      "action": "Defuse"
     }
   }
 }

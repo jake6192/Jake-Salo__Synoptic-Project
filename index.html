@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+  </head>
+  <body>
+
+
+
+    <div class="mainMenu">
+
+      <div class="button" id="newGame">
+        New Game
+        <div class="selectConfig">
+          <div class="button hide" onclick="CONFIG.useDefaultConfig();">Select Pre-Defined Config</div>
+          <div class="button hide" onclick="CONFIG.startCustomConfig();">Create New Custom Config</div>
+        </div>
+      </div>
+
+    </div>
+
+
+
+    <script src="js/Config.js"></script>
+    <script type="text/javascript">
+      const CONFIG = new Config();
+    </script>
+  </body>
+</html>
