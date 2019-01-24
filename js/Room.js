@@ -58,9 +58,8 @@ class Room {
           if(this.Passages.South.passageIsOpen) document.querySelector('#changeRoom > .subActions > .subAction[name="South"]').classList.remove("inactive");
           if(this.Passages.West.passageIsOpen) document.querySelector('#changeRoom > .subActions > .subAction[name="West"]').classList.remove("inactive");
           break;
-        case "attackThreat":
-          /* All threat option will be available - the player need to discover the correct option. */
-          break;
+        /* All threat options will be available - the player needs to discover the correct option for each threat. */
+        case "attackThreat": break;
       }
     };
 
@@ -89,10 +88,10 @@ class Room {
       document.querySelector('#attackThreat > .subActions').removeAttribute('style');
     };
 
-    // TODO. //
     this.collectTreasure = function() {
-      if(!this.Threat) console.log(true);
-      else console.log(false);
+      if(!this.Threat) {
+        // TODO. //
+      } else alert('You must first defeat the threat!');
     };
   };
 }
