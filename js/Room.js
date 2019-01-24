@@ -69,21 +69,25 @@ class Room {
 
         if(playerAction == 'changeRoom') PLAYER.changeRoom(action);
         else if(playerAction == 'attackThreat') {
-          if(this.Threat.action == action) {
-            if( !(action == 'Bribe' && PLAYER.wealth < 50) ) {
-              delete this.Threat;
-              this.drawRoom();
-            }
+          if(this.Threat) { // If the threat is still present. //
             if(action == 'Bribe') {
-              if(PLAYER.wealth > 50) PLAYER.wealth -= 50;
-              else alert('You do not have enough gold to bribe.');
+              if(PLAYER.wealth > 50) PLAYER.wealth -= 50; // A bribe will remove 50 coins, regardless of it's effect. //
+              else {
+                alert('You do not have enough gold to bribe.');
+                return;
+              }
             }
-          } else alert('That had no effect on the threat.');
+            /* If the action is valid for that threat & if the action was a bribe - ensure that they had enough gold coins. */
+            if(this.Threat.action == action && !(action == 'Bribe' && PLAYER.wealth < 50) ) delete this.Threat;
+            else alert('That had no effect on the threat.');
+          }
+          this.drawRoom();
         }
         this.resetSubActions();
       } else alert('You cannot perform this action here...');
     };
 
+    /* Hide any popup menus & mark invalid options as inactive. */
     this.resetSubActions = function() {
       let elements = document.querySelector('#changeRoom').children[0].children;
       for(let i = 0; i < elements.length; i++)
