@@ -41,8 +41,8 @@ class Room {
         }
       } else { // If all threats have been defeated, draw the treasure for the room. //
         switch(this.Treasure.type) {
-          case "Gold": /* TODO */ break;
-          case "Key": /* TODO */ break;
+          case "Gold": GAME.context.drawImage(GAME.SVG_Files.gold, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
+          case "Key": GAME.context.drawImage(GAME.SVG_Files.key, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
         }
       }
     };

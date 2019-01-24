@@ -2,7 +2,7 @@ class Game {
   constructor() {
     this.config = null;
     this.rooms = [];
-    this.SVG_FilePaths = ['SVG/GamePlay/passage.svg', 'SVG/Threats/bomb.svg', 'SVG/Threats/guard_dog.svg', 'SVG/Threats/dungeon_master.svg'];
+    this.SVG_FilePaths = ['SVG/GamePlay/passage.svg', 'SVG/Threats/bomb.svg', 'SVG/Threats/guard_dog.svg', 'SVG/Threats/dungeon_master.svg', 'SVG/Treasure/gold.svg', 'SVG/Treasure/key.svg'];
     this.SVG_Files = {};
     this.canvas = document.createElement('canvas');
     this.context = this.canvas.getContext('2d');
