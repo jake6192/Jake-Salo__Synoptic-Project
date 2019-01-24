@@ -26,6 +26,11 @@ h1 { margin: 0; }
   font-size: 20px;
   line-height: 20px;
 }
+.playerAction:hover {
+  cursor: pointer;
+  background-color: #ddd;
+  border: 2px inset #aaa;
+}
 
 .subActions {
   display: none;
@@ -34,7 +39,7 @@ h1 { margin: 0; }
   height: 30%;
   top: 22%;
   right: 7.5%;
-  background-color: #bbbbbbdd;
+  background-color: #bbbbbb;
   border: 1px groove #aaa;
   flex-direction: column;
   justify-content: space-evenly;
@@ -50,5 +55,15 @@ h1 { margin: 0; }
 }
 
 .inactive {
+  opacity: 0.25;
+}
 
+.subActions > .close {
+  position: relative;
+  left: 332px;
+  width: fit-content;
+  padding: 2.5px 5px;
+  background-color: #ddd;
+  border: 1px solid #888;
+  border-radius: 4px;
 }

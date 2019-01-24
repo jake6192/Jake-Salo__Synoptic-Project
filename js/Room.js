@@ -12,7 +12,8 @@ class Room {
     };
 
     this.drawRoom = function() {
-      GAME.context.translate(this.margins.hMargin, this.margins.vMargin); // Move the origin to the top left corner of the room. //
+      GAME.context.fillStyle = '#BBBBBB';
+      GAME.context.fillRect(0, 0, this.size, this.size);
       /* Draw the outline of the room. */
       GAME.context.lineWidth = 2;
       GAME.context.moveTo(0, 0);
@@ -43,9 +44,44 @@ class Room {
       **/
     };
 
-    this.showValidActions = function(HTMLelement) {
-      let id  = HTMLelement.id;
-      
+    this.showValidActions = function(id) {
+      let subActions = document.querySelector(`#${id} > div.subActions`);
+      subActions.style.display = "flex";
+
+      switch(id) {
+        case "changeRoom":
+          if(this.Passages.North.passageIsOpen) document.querySelector('#changeRoom > .subActions > .subAction[name="North"]').classList.remove("inactive");
+          if(this.Passages.East.passageIsOpen) document.querySelector('#changeRoom > .subActions > .subAction[name="East"]').classList.remove("inactive");
+          if(this.Passages.South.passageIsOpen) document.querySelector('#changeRoom > .subActions > .subAction[name="South"]').classList.remove("inactive");
+          if(this.Passages.West.passageIsOpen) document.querySelector('#changeRoom > .subActions > .subAction[name="West"]').classList.remove("inactive");
+          break;
+        case "attackThreat":
+          /* All threat option will be available - the player need to discover the correct option. */
+          break;
+      }
+    };
+
+    this.selectSubAction = function(playerAction, HTMLelement) {
+      if(!HTMLelement.classList.contains('inactive')) {
+        let action = HTMLelement.getAttribute('name');
+
+        if(playerAction == 'changeRoom') {
+          PLAYER.changeRoom(action);
+        } else if(playerAction == 'attackThreat') {
+          if(action == 'Bribe') PLAYER.wealth -= 50;
+          if(this.Threat.action == action) {
+            this.removeThreat(); // TODO. //
+            this.drawTreasure(); // TODO. //
+          }
+        }
+      } else alert('You cannot perform this action here...');
+    };
+
+    this.resetSubActions = function() {
+      let elements = document.querySelector('#changeRoom').children[0].children;
+      for(let i = 0; i < elements.length; i++)
+        if(elements[i].classList.contains('subAction')) elements[i].classList.add('inactive');
+      document.querySelector('.subActions').removeAttribute('style');
     };
   };
 }
