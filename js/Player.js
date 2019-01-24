@@ -15,7 +15,7 @@ class Player {
         case "West": this.room = GAME.rooms[this.room.Passages.West.connectingRoomID]; break;
       }
       this.room.drawRoom();
-      this.room.resetSubActions(); // TODO. //
+      this.room.resetSubActions();
     }
   };
 }
