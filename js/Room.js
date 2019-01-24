@@ -65,12 +65,12 @@ class Room {
 
     this.selectSubAction = function(playerAction, HTMLelement) {
       if(!HTMLelement.classList.contains('inactive')) {
-        let action = HTMLelement.getAttribute('name');
+        let subAction = HTMLelement.getAttribute('name');
 
-        if(playerAction == 'changeRoom') PLAYER.changeRoom(action);
+        if(playerAction == 'changeRoom') PLAYER.changeRoom(subAction);
         else if(playerAction == 'attackThreat') {
           if(this.Threat) { // If the threat is still present. //
-            if(action == 'Bribe') {
+            if(subAction == 'Bribe') {
               if(PLAYER.wealth > 50) PLAYER.wealth -= 50; // A bribe will remove 50 coins, regardless of it's effect. //
               else {
                 alert('You do not have enough gold to bribe.');
@@ -78,10 +78,10 @@ class Room {
               }
             }
             /* If the action is valid for that threat & if the action was a bribe - ensure that they had enough gold coins. */
-            if(this.Threat.action == action && !(action == 'Bribe' && PLAYER.wealth < 50) ) delete this.Threat;
+            if(this.Threat.action == subAction && !(subAction == 'Bribe' && PLAYER.wealth < 50) ) delete this.Threat;
             else alert('That had no effect on the threat.');
+            this.drawRoom();
           }
-          this.drawRoom();
         }
         this.resetSubActions();
       } else alert('You cannot perform this action here...');
