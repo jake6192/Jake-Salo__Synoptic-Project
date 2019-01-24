@@ -33,15 +33,18 @@ class Room {
       if(this.Passages.West.passageIsOpen) GAME.context.drawImage(GAME.SVG_Files.passage, 1, (PLAYER.room.size-PLAYER.room.SVG_Size)/2, PLAYER.room.SVG_Size, PLAYER.room.SVG_Size);
 
       /* Draw the threats for this room. */
-      switch(this.Threat.type) {
-        case 'Bomb': GAME.context.drawImage(GAME.SVG_Files.bomb, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
-        case 'Guard Dog': GAME.context.drawImage(GAME.SVG_Files.guard_dog, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
-        case 'Dungeon Master': GAME.context.drawImage(GAME.SVG_Files.dungeon_master, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), PLAYER.room.SVG_Size*1.5, PLAYER.room.SVG_Size*1.5); break;
+      if(this.Threat) {
+        switch(this.Threat.type) {
+          case 'Bomb': GAME.context.drawImage(GAME.SVG_Files.bomb, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
+          case 'Guard Dog': GAME.context.drawImage(GAME.SVG_Files.guard_dog, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
+          case 'Dungeon Master': GAME.context.drawImage(GAME.SVG_Files.dungeon_master, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size*0.75), PLAYER.room.SVG_Size*1.5, PLAYER.room.SVG_Size*1.5); break;
+        }
+      } else { // If all threats have been defeated, draw the treasure for the room. //
+        switch(this.Treasure.type) {
+          case "Gold": /* TODO */ break;
+          case "Key": /* TODO */ break;
+        }
       }
-
-      /*
-      * The treasure will get drawn once the player defeats the threat.
-      **/
     };
 
     this.showValidActions = function(id) {
@@ -70,10 +73,11 @@ class Room {
         } else if(playerAction == 'attackThreat') {
           if(action == 'Bribe') PLAYER.wealth -= 50;
           if(this.Threat.action == action) {
-            this.removeThreat(); // TODO. //
-            this.drawTreasure(); // TODO. //
+            delete this.Threat;
+            this.drawRoom();
           }
         }
+        this.resetSubActions();
       } else alert('You cannot perform this action here...');
     };
 
@@ -81,7 +85,14 @@ class Room {
       let elements = document.querySelector('#changeRoom').children[0].children;
       for(let i = 0; i < elements.length; i++)
         if(elements[i].classList.contains('subAction')) elements[i].classList.add('inactive');
-      document.querySelector('.subActions').removeAttribute('style');
+      document.querySelector('#changeRoom > .subActions').removeAttribute('style');
+      document.querySelector('#attackThreat > .subActions').removeAttribute('style');
+    };
+
+    // TODO. //
+    this.collectTreasure = function() {
+      if(!this.Threat) console.log(true);
+      else console.log(false);
     };
   };
 }
