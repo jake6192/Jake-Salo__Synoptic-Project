@@ -65,7 +65,7 @@
         "isExitPassage": false
       },
       "East": {
-        "passageIsOpen": false,
+        "passageIsOpen": true,
         "isExitPassage": true
       },
       "South": {
@@ -78,8 +78,7 @@
       }
     },
     "Treasure": {
-      "type": "Key",
-      "value": 1
+      "type": "Key"
     },
     "Threat": {
       "type": "Dungeon Master",

@@ -52,5 +52,9 @@ class Game {
         GAME.rooms.push(room);
       }
     };
+
+    this.complete = function() {
+      alert(`Game complete! You finished with ${PLAYER.wealth} gold coins!`);
+    }
   };
 }

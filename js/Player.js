@@ -2,20 +2,20 @@ class Player {
   constructor() {
     this.room = null;
     this.wealth = 0;
+    this.hasKey = false;
 
     this.setRandomRoom = function() {
       this.room = GAME.rooms[Math.floor(Math.random()*GAME.rooms.length)];
     };
 
     this.changeRoom = function(dir) {
-      switch(dir) {
-        case "North": this.room = GAME.rooms[this.room.Passages.North.connectingRoomID]; break;
-        case "East": this.room = GAME.rooms[this.room.Passages.East.connectingRoomID]; break;
-        case "South": this.room = GAME.rooms[this.room.Passages.South.connectingRoomID]; break;
-        case "West": this.room = GAME.rooms[this.room.Passages.West.connectingRoomID]; break;
+      if(this.room.Passages[dir].isExitPassage && PLAYER.hasKey) GAME.complete();
+      else if(this.room.Passages[dir].isExitPassage) alert('You need to find the key first!');
+      else {
+        this.room = GAME.rooms[this.room.Passages[dir].connectingRoomID];
+        this.room.drawRoom();
+        this.room.resetSubActions();
       }
-      this.room.drawRoom();
-      this.room.resetSubActions();
     }
   };
 }
