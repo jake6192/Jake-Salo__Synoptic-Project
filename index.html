@@ -2,6 +2,7 @@
 <html lang="en" dir="ltr">
   <head>
     <meta charset="utf-8">
+    <link rel="stylesheet" href="style.css">
     <title></title>
   </head>
   <body>
@@ -10,11 +11,10 @@
 
     <div class="mainMenu">
 
-      <div class="button" id="newGame">
-        New Game
-        <div class="selectConfig">
-          <div class="button hide" onclick="CONFIG.useDefaultConfig();">Select Pre-Defined Config</div>
-          <div class="button hide" onclick="CONFIG.createCustomConfig();">Create New Custom Config</div>
+      <div class="button" id="newGame">New Game
+        <div class="selectConfig hide">
+          <div class="button" onclick="CONFIG.useDefaultConfig();">Select Pre-Defined Config</div>
+          <div class="button" onclick="CONFIG.createCustomConfig();">Create New Custom Config</div>
         </div>
       </div>
 
@@ -25,6 +25,11 @@
     <script src="js/Config.js"></script>
     <script type="text/javascript">
       const CONFIG = new Config();
+
+      document.getElementById("newGame").addEventListener("click", function() {
+        ev = window.event || ev;
+        if(this === ev.target) document.querySelector('.selectConfig').classList.toggle('hide');
+      });
     </script>
   </body>
 </html>
