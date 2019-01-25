@@ -11,7 +11,7 @@ const PLAYER = new Player();
 **/
 function newGame() {
   /* This uses a callback function as all of the other processes are dependant on the configuration information. */
-  GAME.loadConfig('config.json', function() {
+  GAME.loadConfig(function() {
     GAME.loadSVGFiles(); // This will also begin to draw the starting room when complete. //
     GAME.createMaze();
     GAME.prepareCanvas(); // Draws a blank canvas in preparation for rooms. //

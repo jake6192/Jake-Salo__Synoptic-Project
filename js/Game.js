@@ -12,16 +12,22 @@ class Game {
     this.canvas.height = (window.innerHeight*0.666);
 
     /* loadConfig() will pull the tempory configuration file and assign it's contents to the GAME object. */
-    this.loadConfig = function(path, callback) {
-      var xhttp = new XMLHttpRequest();
-      xhttp.onreadystatechange = function() {
-        if(this.readyState == 4 && this.status == 200) {
-          GAME.config = JSON.parse(this.responseText);
-          callback();
-        }
-      };
-      xhttp.open("GET", path, true);
-      xhttp.send();
+    this.loadConfig = function(callback) {
+      let sessionStorage = window.sessionStorage;
+      if(!sessionStorage.config) {
+        var xhttp = new XMLHttpRequest();
+        xhttp.onreadystatechange = function() {
+          if(this.readyState == 4 && this.status == 200) {
+            GAME.config = JSON.parse(this.responseText);
+            callback();
+          }
+        };
+        xhttp.open("GET", 'config.json', true);
+        xhttp.send();
+      } else {
+        GAME.config = JSON.parse(sessionStorage.config);
+        callback();
+      }
     };
 
     this.getObjectLength = function(obj) {

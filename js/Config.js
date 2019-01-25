@@ -3,7 +3,10 @@ class Config {
     this.rooms = {};
     this.keyIsPlaced = null;
 
-    this.startGame = function() {};
+    this.useDefaultConfig = function() {
+      if(window.sessionStorage.config) delete window.sessionStorage.config;
+      window.location="game.html"
+    };
 
     this.createCustomConfig = function() {
       this.keyIsPlaced = false;
@@ -156,6 +159,10 @@ class Config {
         this.rooms[exitRoomID].Passages[exitPassageDir].isExitPassage = true;
         this.rooms[exitRoomID].Passages[exitPassageDir].passageIsOpen = true;
         // END EXIT PASSAGE
+
+        // Save the user generated configuration to session storage. //
+        window.sessionStorage.config = JSON.stringify(this.rooms);
+        window.location='game.html';
       }
     };
 
