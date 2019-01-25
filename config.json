@@ -23,11 +23,11 @@
       }
     },
     "Treasure": {
-      "type": "Gold",
+      "type": "gold",
       "value": 100
     },
     "Threat": {
-      "type": "Bomb",
+      "type": "bomb",
       "action": "Defuse"
     }
   },
@@ -53,11 +53,11 @@
       }
     },
     "Treasure": {
-      "type": "Gold",
+      "type": "gold",
       "value": 150
     },
     "Threat": {
-      "type": "Troll",
+      "type": "troll",
       "action": "Fight"
     }
   },
@@ -83,11 +83,11 @@
       }
     },
     "Treasure": {
-      "type": "Gold",
+      "type": "gold",
       "value": 200
     },
     "Threat": {
-      "type": "Guard Dog",
+      "type": "guard dog",
       "action": "Offer Food"
     }
   },
@@ -111,11 +111,11 @@
       }
     },
     "Treasure": {
-      "type": "Gold",
+      "type": "gold",
       "value": 250
     },
     "Threat": {
-      "type": "Dragon",
+      "type": "dragon",
       "action": "Fight"
     }
   },
@@ -139,10 +139,10 @@
       }
     },
     "Treasure": {
-      "type": "Key"
+      "type": "key"
     },
     "Threat": {
-      "type": "Dungeon Master",
+      "type": "dungeon master",
       "action": "Bribe"
     }
   },
@@ -167,11 +167,11 @@
       }
     },
     "Treasure": {
-      "type": "Gold",
+      "type": "gold",
       "value": 300
     },
     "Threat": {
-      "type": "Bomb",
+      "type": "bomb",
       "action": "Defuse"
     }
   }
