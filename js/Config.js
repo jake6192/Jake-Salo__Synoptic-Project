@@ -16,9 +16,9 @@ class Config {
           roomQuantity = +prompt('How many rooms will your maze have?');
         } while(isNaN(roomQuantity) || roomQuantity < 1 || roomQuantity == "");
 
-        /* Loop through each room and gather property values. */
         for(let i = 0; i < roomQuantity; i++) {
-          let room = { // Empty template for a rooms configuration - filled in throughout the following process. //
+          // Empty templates for room configuration - filled in throughout the following process. //
+          this.rooms[i] = {
             "Passages": {
               "North": {},
               "East": {},
@@ -28,24 +28,41 @@ class Config {
             "Treasure": {},
             "Threat": {}
           };
+        }
 
-
+        /* Loop through each room and gather property values. */
+        for(let i = 0; i < roomQuantity; i++) {
           // PASSAGES
           /* Boolean hasPassage used to validate user input.
           ** Set to true when at least a room has at least one open passage. */
           let hasPassage = false;
           do { // Repeat until 'hasPassage' is true; //
             for(let j = 0; j < directions.length; j++) {
-              let passageIsOpen;
-              do { // Repeat until a valid RoomID has been supplied (Or an empty string for closed passages). //
-                passageIsOpen = prompt(`RoomID ${i}:\nIs the ${directions[j]} passage open?\n\nIf the passage is open, enter the RoomID it will lead to.\nIf it is not open, please leave this field blank.`);
-              } while(isNaN(passageIsOpen) || passageIsOpen >= roomQuantity || passageIsOpen < 0);
-              if(passageIsOpen != "") {
-                hasPassage = true;
-                room.Passages[directions[j]].passageIsOpen = true;
-                room.Passages[directions[j]].isExitPassage = false;
-                room.Passages[directions[j]].connectingRoomID = +passageIsOpen;
-              } else room.Passages[directions[j]].passageIsOpen = false;
+              if(!this.rooms[i].Passages[directions[j]].passageIsOpen) {
+                let connectingRoomID;
+                do { // Repeat until a valid RoomID has been supplied (Or an empty string for closed passages). //
+                  connectingRoomID = prompt(`RoomID ${i}:\nIs the ${directions[j]} passage open?\n\nIf the passage is open, enter the RoomID it will lead to.\nIf it is not open, please leave this field blank.`);
+                } while(isNaN(connectingRoomID) || connectingRoomID >= roomQuantity || connectingRoomID < 0);
+                if(connectingRoomID != "") {
+                  hasPassage = true;
+                  this.rooms[i].Passages[directions[j]].passageIsOpen = true;
+                  this.rooms[i].Passages[directions[j]].isExitPassage = false;
+                  this.rooms[i].Passages[directions[j]].connectingRoomID = +connectingRoomID;
+                  let connectingRoomDir, passageisValid = false;
+                  // This next block ensures that the passages are bi-directional. //
+                  do { // Repeat until an unused passage direction is entered for the connecting room. //
+                    connectingRoomDir = prompt('What direction will this passage lead to in the connecting room?\nNorth, East, South or West?').toLowerCase();
+                    connectingRoomDir = connectingRoomDir.charAt(0).toUpperCase()+connectingRoomDir.slice(1); // Capitalize user input properly. //
+                    try {
+                      if( !this.rooms[connectingRoomID].Passages[connectingRoomDir].passageIsOpen ) passageisValid = true;
+                    } catch(e) { // Handle the scenario that a direction is entered that already connects to a room. //
+                      if (e instanceof TypeError) passageisValid = false;
+                    }
+                  } while(!passageisValid);
+                  this.rooms[connectingRoomID].Passages[connectingRoomDir].passageIsOpen = true;
+                  this.rooms[connectingRoomID].Passages[connectingRoomDir].connectingRoomID = i;
+                } else this.rooms[i].Passages[directions[j]].passageIsOpen = false; // If input is left blank, set this passage to closed. //
+              } else hasPassage = true; // If the room already has an open passage, then set the validation boolean to true. //
             }
             if(!hasPassage) alert('You need at least one passage in a room.');
           } while(!hasPassage);
@@ -59,9 +76,9 @@ class Config {
             threat = prompt('What threat will be in this room?\nPlease enter one of the following:\nbomb, guard dog, troll, dragon, dungeon master.').toLowerCase();
             if(!threats.includes(threat)) alert('Invalid threat type - Please try again.');
           } while(!threats.includes(threat));
-          room.Threat.type = threat;
+          this.rooms[i].Threat.type = threat;
           /* Retrieve the correct action that can defeat the chosen threat. */
-          room.Threat.action = this.getThreatAction(threat);
+          this.rooms[i].Threat.action = this.getThreatAction(threat);
           // END THREATS
 
 
@@ -71,7 +88,7 @@ class Config {
             treasure = prompt("What treasure will be in this room?\n'gold', or the 'key' for the exit?").toLowerCase();
             if(!treasures.includes(treasure)) alert('Invalid treasure type - Pleasy try again.');
           } while(!treasures.includes(treasure));
-          room.Treasure.type = treasure; // Set the treasure type. //
+          this.rooms[i].Treasure.type = treasure; // Set the treasure type. //
           if(treasure == 'gold') {
             let value;
             do { // Repeat until a positive integer has been supplied. //
@@ -79,7 +96,7 @@ class Config {
               if(isNaN(value)) alert('Not a number... Try again.');
               if(value <= 0) alert('Must be more than 0!');
             } while(isNaN(value) || value <= 0);
-            room.Treasure.value = +value; // Set the value of gold for that room. //
+            this.rooms[i].Treasure.value = +value; // Set the value of gold for that room. //
           } else if(treasure == 'key' && this.keyIsPlaced) {
             /* If a player trys to place a key in a room after the key
             ** has already been placed - then force treasure type to gold. */
@@ -88,14 +105,10 @@ class Config {
               value = prompt('key already placed. This room must contain gold - How much?');
               if(isNaN(value)) alert('Not a number... Try again.');
             } while(isNaN(value));
-            room.Treasure.type = 'gold';
-            room.Treasure.value = +value;
+            this.rooms[i].Treasure.type = 'gold';
+            this.rooms[i].Treasure.value = +value;
           } else this.keyIsPlaced = true; // User input can only be 'key' at this point. //
           // END TREASURE
-
-
-          /* Add the user generated room to the configuration rooms array. */
-          this.rooms[i] = room;
         }
 
 
