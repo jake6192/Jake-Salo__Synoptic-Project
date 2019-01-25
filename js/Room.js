@@ -47,6 +47,7 @@ class Room {
         }
       }
       document.getElementById('wealth').innerHTML = `${PLAYER.wealth} Gold Coins`;
+      document.getElementById('roomID').innerHTML = this.id;
       document.getElementById('roomThreat').innerHTML = this.Threat ? this.Threat.type : 'Defeated';
       document.getElementById('roomTreasure').innerHTML = this.Treasure ? (this.Treasure.type == 'gold' ? `${this.Treasure.value} Gold Coins` : 'The key to win...') : 'Collected';
     };
