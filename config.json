@@ -24,7 +24,7 @@
     },
     "Treasure": {
       "type": "gold",
-      "value": 100
+      "value": 10
     },
     "Threat": {
       "type": "bomb",
@@ -54,7 +54,7 @@
     },
     "Treasure": {
       "type": "gold",
-      "value": 150
+      "value": 25
     },
     "Threat": {
       "type": "troll",
@@ -84,7 +84,7 @@
     },
     "Treasure": {
       "type": "gold",
-      "value": 200
+      "value": 5
     },
     "Threat": {
       "type": "guard dog",
@@ -112,7 +112,7 @@
     },
     "Treasure": {
       "type": "gold",
-      "value": 250
+      "value": 50
     },
     "Threat": {
       "type": "dragon",
@@ -168,7 +168,7 @@
     },
     "Treasure": {
       "type": "gold",
-      "value": 300
+      "value": 100
     },
     "Threat": {
       "type": "bomb",

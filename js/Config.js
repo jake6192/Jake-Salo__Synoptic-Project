@@ -60,6 +60,7 @@ class Config {
                     }
                   } while(!passageisValid);
                   this.rooms[connectingRoomID].Passages[connectingRoomDir].passageIsOpen = true;
+                  this.rooms[connectingRoomID].Passages[connectingRoomDir].isExitPassage = false;
                   this.rooms[connectingRoomID].Passages[connectingRoomDir].connectingRoomID = i;
                 } else this.rooms[i].Passages[directions[j]].passageIsOpen = false; // If input is left blank, set this passage to closed. //
               } else hasPassage = true; // If the room already has an open passage, then set the validation boolean to true. //

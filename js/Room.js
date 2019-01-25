@@ -80,8 +80,10 @@ class Room {
               }
             }
             /* If the action is valid for that threat & if the action was a bribe - ensure that they had enough gold coins. */
-            if(this.Threat.action == subAction && !(subAction == 'Bribe' && PLAYER.wealth < 50) ) delete this.Threat;
-            else alert('That had no effect on the threat.');
+            if(this.Threat.action == subAction) {
+              if(subAction != 'Bribe') delete this.Threat;
+              else if(PLAYER.wealth >= 50) delete this.Threat;
+            } else alert('That had no effect on the threat.');
             this.drawRoom();
           }
         }
