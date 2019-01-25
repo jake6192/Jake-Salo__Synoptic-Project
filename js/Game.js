@@ -7,8 +7,8 @@ class Game {
     this.canvas = document.createElement('canvas');
     this.context = this.canvas.getContext('2d');
     this.canvas.id = "canvas";
-    this.canvas.width = 1200;
-    this.canvas.height = 675;
+    this.canvas.width = (window.innerWidth*0.666);
+    this.canvas.height = (window.innerHeight*0.666);
 
     /* loadConfig() will pull the tempory configuration file and assign it's contents to the GAME object. */
     this.loadConfig = function(path, callback) {

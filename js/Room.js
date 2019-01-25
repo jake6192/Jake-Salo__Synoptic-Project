@@ -4,7 +4,7 @@ class Room {
     this.Passages = room.Passages;
     this.Treasure = room.Treasure;
     this.Threat = room.Threat;
-    this.size = 500; // Size of entire room in pixels. //
+    this.size = (GAME.canvas.width > GAME.canvas.height ? GAME.canvas.height*0.8 : GAME.canvas.width*0.8); // Size of entire room in pixels. //
     this.SVG_Size = this.size/7.5;
     this.margins = { // Used to center the room in the canvas. //
       hMargin: (GAME.canvas.width-this.size)/2,
