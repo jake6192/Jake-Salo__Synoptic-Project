@@ -46,7 +46,9 @@ class Room {
           case "key": GAME.context.drawImage(GAME.SVG_Files.key, (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), (PLAYER.room.size/2)-(PLAYER.room.SVG_Size/2), PLAYER.room.SVG_Size, PLAYER.room.SVG_Size); break;
         }
       }
-      document.getElementById('wealth').innerHTML = PLAYER.wealth;
+      document.getElementById('wealth').innerHTML = `${PLAYER.wealth} Gold Coins`;
+      document.getElementById('roomThreat').innerHTML = this.Threat ? this.Threat.type : 'Defeated';
+      document.getElementById('roomTreasure').innerHTML = this.Treasure ? (this.Treasure.type == 'gold' ? `${this.Treasure.value} Gold Coins` : 'The key to win...') : 'Collected';
     };
 
     this.showValidActions = function(id) {
