@@ -4,6 +4,7 @@ body {
   display: flex;
   flex-direction: row;
   margin: 0;
+  overflow-y: hidden;
 }
 
 h1, h2 { margin: 0; }
@@ -52,7 +53,7 @@ h1, h2 { margin: 0; }
   margin: 1% 0;
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: start;
   text-align: center;
 }
 
