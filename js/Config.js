@@ -56,10 +56,10 @@ class Config {
                   do { // Repeat until an unused passage direction is entered for the connecting room. //
                     connectingRoomDir = prompt('What direction will this passage lead to in the connecting room?\nNorth, East, South or West?').toLowerCase();
                     connectingRoomDir = connectingRoomDir.charAt(0).toUpperCase()+connectingRoomDir.slice(1); // Capitalize user input properly. //
-                    try {
+                    try { // Ensure that the direction entered does not already connect to a room. //
                       if( !this.rooms[connectingRoomID].Passages[connectingRoomDir].passageIsOpen ) passageisValid = true;
-                    } catch(e) { // Handle the scenario that a direction is entered that already connects to a room. //
-                      if (e instanceof TypeError) passageisValid = false;
+                    } catch(e) { // Handle the scenario that an invalid direction is entered. //
+                      if(e instanceof TypeError) passageisValid = false;
                     }
                   } while(!passageisValid);
                   this.rooms[connectingRoomID].Passages[connectingRoomDir].passageIsOpen = true;
@@ -149,10 +149,10 @@ class Config {
         do { // Repeat until a valid passage direction has been selected. //
           exitPassageDir = prompt('What passage leads to the exit?\nNorth, East, South or West?').toLowerCase();
           exitPassageDir = exitPassageDir.charAt(0).toUpperCase() + exitPassageDir.slice(1); // Capitalize user input properly. //
-          try {
+          try { // Ensure that the direction entered does not already connect to a room. //
             if( !this.rooms[exitRoomID].Passages[exitPassageDir].passageIsOpen ) passageisValid = true;
           } catch(e) { // Handle the scenario that an invalid direction is entered. //
-            if (e instanceof TypeError) passageisValid = false;
+            if(e instanceof TypeError) passageisValid = false;
           }
           if(!passageisValid) alert('Invalid Passage direction, or it already leads to another room - please try again.');
         } while(!passageisValid);

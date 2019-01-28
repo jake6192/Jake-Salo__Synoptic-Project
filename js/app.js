@@ -19,6 +19,11 @@ function newGame() {
   });
 }
 
+function newConfiguration() {
+  if(window.sessionStorage.config) delete window.sessionStorage.config;
+  window.location='index.html';
+}
+
 function handler(ev) {
   ev = window.event || ev;
   if(this === ev.target) PLAYER.room.showValidActions(ev.target.id);

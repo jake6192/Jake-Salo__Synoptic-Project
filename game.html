@@ -11,6 +11,7 @@
 
     <div id="playerActions">
       <h1>Actions:</h1>
+      <br />
       <div class="playerAction" id="changeRoom">
         Change Room
         <div class="subActions">
@@ -21,6 +22,7 @@
           <div class="subAction inactive" name="West" onclick="PLAYER.room.selectSubAction('changeRoom', this);">West</div>
         </div>
       </div>
+      <br />
       <div class="playerAction" id="attackThreat">
         Attack Threat
         <div class="subActions">
@@ -31,16 +33,21 @@
           <div class="subAction" name="Bribe" onclick="PLAYER.room.selectSubAction('attackThreat', this);">Bribe [50 Gold]</div>
         </div>
       </div>
+      <br />
       <div class="playerAction" id="collectTreasure" onclick="PLAYER.room.collectTreasure();">Collect Treasure</div>
-
+      <br />
       <div id="stats">
+        <h2>Room Info:</h2>
         <span><strong>RoomID:&nbsp;&nbsp;</strong><span id="roomID"></span></span>
         <span><strong>Room Threat:&nbsp;&nbsp;</strong><span id="roomThreat"></span></span>
         <span><strong>Room Treasure:&nbsp;&nbsp;</strong><span id="roomTreasure"></span></span>
         <span><strong>Your Balance:&nbsp;&nbsp;</strong><span id="wealth"></span></span>
+        <br />
+        <div class="playerAction" onclick="newGame();">Restart Game</div>
+        <br />
+        <div class="playerAction" onclick="newConfiguration();">New Maze Config</div>
       </div>
 
-      <div class="playerAction" onclick="newGame()">New Game</div>
     </div>
 
     <script src="js/SVG.js"></script>
